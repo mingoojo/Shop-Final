@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { Category, ProductDetail, ProductSummary } from '../types';
+import {
+  Cart, Category, ProductDetail, ProductSummary,
+} from '../types';
 
 const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
@@ -45,6 +47,18 @@ class ApiService {
     return accessToken;
   }
 
+  async signup({ email, password, name }:{
+    email:string, password:string, name:string}):Promise<string> {
+    const { data } = await this.instance.post('/signup', { email, password, name }, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true,
+    });
+    const { accessToken } = data;
+    return accessToken;
+  }
+
   async fetchCategories():Promise<Category[]> {
     const { data } = await this.instance.get('/categories');
     const { categories } = data;
@@ -63,6 +77,12 @@ class ApiService {
     const { data } = await this.instance.get(`/products/${productId}`);
     const { product } = data;
     return product;
+  }
+
+  async fetchCart():Promise<Cart> {
+    const { data } = await this.instance.get('/cart');
+    const { cartItem } = data;
+    return cartItem;
   }
 
   async addProductToCart({ productId, options, quantity }:{

@@ -27,6 +27,7 @@ const signup = async (req:Request, res:Response, next:NextFunction) => {
     const error = new HttpError('There is no userdata, Please check again', 500);
     return next(error);
   }
+
   if (existedUser) {
     const error = new HttpError('Inputed email is already exists, Please check again', 403);
     return next(error);
@@ -39,6 +40,7 @@ const signup = async (req:Request, res:Response, next:NextFunction) => {
     const error = new HttpError('Could not create password, please try again.', 500);
     return next(error);
   }
+
   const createdUser = new Users({
     name,
     email,

@@ -7,6 +7,7 @@ import signup from './signup';
 import checkToken from './checkToken';
 import logout from './logout';
 import addToCart from './addToCart';
+import getCart from './getCart';
 
 export default {
   getProducts,
@@ -18,4 +19,5 @@ export default {
   signup,
   checkToken,
   addToCart,
+  getCart,
 };

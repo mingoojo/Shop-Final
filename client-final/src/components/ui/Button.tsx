@@ -13,6 +13,11 @@ white-space: nowrap;
     background-color: ${(props) => props.theme.colors.textMain};
     color: ${(props) => props.theme.colors.backgroundMain};
   }
+
+  :disabled {
+    filter: grayscale(80%);
+    cursor: not-allowed;
+  }
 `;
 
 type ButtonProps ={
