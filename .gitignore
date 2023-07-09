@@ -134,3 +134,6 @@ output
 
 # IDEA
 .idea
+
+#git
+.gitignore
