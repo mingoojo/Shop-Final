@@ -1,0 +1,19 @@
+import { useEffect } from 'react';
+import apiService from '../services/apiService';
+import useAccessToken from './useAccessToken';
+
+export default function useCheckAccessToken() {
+  const { accessToken, setAccessToken } = useAccessToken();
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        await apiService.fetchCurrentUser();
+      } catch (e) {
+        setAccessToken('');
+      }
+    };
+    if (accessToken) {
+      fetchCurrentUser();
+    }
+  }, [accessToken, setAccessToken]);
+}
