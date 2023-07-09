@@ -136,4 +136,4 @@ output
 .idea
 
 #git
-.gitignore
+gitignore
