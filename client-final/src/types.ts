@@ -10,7 +10,7 @@ export type Image = {
 export type ProductSummary = {
   id: string;
   category: Category;
-  thumbnail: Image;
+  image: string;
   name: string;
   price: number;
 }

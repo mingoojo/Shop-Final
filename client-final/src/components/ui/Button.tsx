@@ -1,42 +1,44 @@
 import styled from 'styled-components';
 
-const ButtonItem = styled.button`
-cursor: pointer;
-padding: 1rem;
-font-weight: bold;
-background-color: ${(props) => props.theme.colors.backgroundMain};
-border: 1px solid ${(props) => props.theme.colors.textMain};
-color: ${(props) => props.theme.colors.textMain};
-border-radius: .4rem;
-white-space: nowrap;
-  &:hover{
-    background-color: ${(props) => props.theme.colors.textMain};
-    color: ${(props) => props.theme.colors.backgroundMain};
-  }
-
-  :disabled {
-    filter: grayscale(80%);
-    cursor: not-allowed;
-  }
-`;
-
-type ButtonProps ={
+type ButtonProps = {
   label : string,
-  type? :'button' | 'submit'
-  onClick?: () => void;
+  type?: 'button' | 'submit';
   disable?:boolean
+  onClick?: () => void;
 }
 
+const ButtonItem = styled.button`
+margin-top: 1rem;
+font-family: 'GmarketSansMedium';
+border-radius: 0.5rem;
+background-color: ${(props) => props.theme.colors.primary};
+color: white;
+font-size: 1.6rem;
+font-weight: bold;
+letter-spacing: 2px;
+width: 300px;
+height: 40px;
+border: none;
+&:active{
+  background-color: ${(props) => props.theme.colors.primaryDeep};
+}
+
+&:disabled {
+    filter: grayscale(80%);
+    cursor: not-allowed;
+}
+`;
+
 export default function Button({
-  type = 'button', label, onClick = undefined, disable = true,
+  label, type = 'button', disable = true, onClick = undefined,
 }:ButtonProps) {
-  const handleClick = () => {
+  const handleChange = () => {
     if (!onClick) {
       return;
     }
     onClick();
   };
   return (
-    <ButtonItem type={type} onClick={handleClick} disabled={!disable}>{label}</ButtonItem>
+    <ButtonItem disabled={!disable} onClick={handleChange} type={type}>{label}</ButtonItem>
   );
 }

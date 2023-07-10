@@ -2,7 +2,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useAccessToken from '../../hooks/useAccessToken';
 import useFetchCategories from '../../hooks/useFetchCategories';
-import Button from '../ui/Button';
 
 const Container = styled.header`
   margin-block: 1rem;
@@ -25,66 +24,38 @@ const Container = styled.header`
 
 export default function Header() {
   const navigate = useNavigate();
-
+  const { accessToken } = useAccessToken();
   const { categories } = useFetchCategories();
-  const { accessToken, setAccessToken } = useAccessToken();
+
   const handleClickLogout = () => {
-    setAccessToken('');
     navigate('/');
   };
   return (
     <Container>
       <h1>shop</h1>
       <nav>
-        <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/products">Product</Link>
-              <ul>
-                {
-                  categories.map((category) => (
-                    <li key={category.id}>
-                      <Link to={`/products?categoryId=${category.id}`}>
-                        {category.name}
-                      </Link>
-                    </li>
-                  ))
-                }
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <ul>
-            {
-              accessToken ? (
-                <>
-                  <li>
-                    <Link to="/cart">Cart</Link>
+        <ul>
+          <li>
+            <Link to="/">home</Link>
+          </li>
+          <li>
+            <Link to="/products">products</Link>
+            <ul>
+              {
+                categories.map((category) => (
+                  <li key={category.id}>
+                    <Link to={`/products?categoryId=${category.id}`}>
+                      {category.name}
+                    </Link>
                   </li>
-                  <li>
-                    <Link to="/orders">Orders</Link>
-                  </li>
-                  <li>
-                    <Button label="Logout" onClick={handleClickLogout} />
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li>
-                    <Link to="/login">Login</Link>
-                  </li>
-                  <li>
-                    <Link to="/signup">Signup</Link>
-                  </li>
-                </>
-              )
-            }
-          </ul>
-        </div>
+                ))
+              }
+            </ul>
+          </li>
+          <li>
+            <Link to="/login">login</Link>
+          </li>
+        </ul>
       </nav>
     </Container>
   );

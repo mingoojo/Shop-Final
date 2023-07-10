@@ -3,10 +3,14 @@ import { NextFunction, Request, Response } from 'express';
 import Categories from '../models/categories';
 import HttpError from '../error/HttpError';
 
-const getCategories = async (req:Request, res:Response, next:NextFunction) => {
-  let categories;
+const createCategory = async (req:Request, res:Response, next:NextFunction) => {
+  const id = `CAT-${Math.random().toString(36).substr(2, 16)}`;
+  const { name } = req.body;
+
+  const newCategories = new Categories({ id, name });
+
   try {
-    categories = await Categories.find();
+    await newCategories.save();
   } catch (err) {
     const error = new HttpError(
       'Creating Category failed, please try again.',
@@ -15,7 +19,7 @@ const getCategories = async (req:Request, res:Response, next:NextFunction) => {
     return next(error);
   }
 
-  res.status(200).send({ categories });
+  res.status(201).send({ newCategories });
 };
 
-export default getCategories;
+export default createCategory;

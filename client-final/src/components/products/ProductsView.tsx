@@ -3,14 +3,11 @@ import styled from 'styled-components';
 import { ProductSummary } from '../../types';
 import Product from './Product';
 
-type ProductsViewProps={
+type ProductsViewProps = {
   products : ProductSummary[]
 }
 
 const Container = styled.div`
-  h1{
-    font-size: 2rem;
-  }
   ul{
     width: 100%;
     display: flex;
@@ -29,9 +26,6 @@ const Container = styled.div`
 export default function ProductsView({ products }:ProductsViewProps) {
   return (
     <Container>
-      <h1>
-        Products
-      </h1>
       <ul>
         {
           products.map((product) => (

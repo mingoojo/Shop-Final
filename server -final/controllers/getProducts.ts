@@ -1,29 +1,34 @@
 /* eslint-disable consistent-return */
 import { NextFunction, Request, Response } from 'express';
 import HttpError from '../error/HttpError';
-import Products from '../models/products';
+import Product from '../models/product';
 
 const getProducts = async (req:Request, res:Response, next:NextFunction) => {
   const { categoryId } = req.query;
   let products;
-
-  if (!categoryId) {
+  if (categoryId) {
     try {
-      products = await Products.find();
+      products = await Product.find({ 'category.id': categoryId });
     } catch (err) {
-      const error = new HttpError('Cannot find a products, Please check again!', 404);
+      const error = new HttpError(
+        'Creating Product failed, please try again.',
+        500,
+      );
       return next(error);
     }
-    res.status(200).send({ products });
   } else {
     try {
-      products = await Products.find({ 'category.id': categoryId });
+      products = await Product.find();
     } catch (err) {
-      const error = new HttpError('Cannot find a products, Please check again!', 404);
+      const error = new HttpError(
+        'Creating Product failed, please try again.',
+        500,
+      );
       return next(error);
     }
-    res.status(200).send({ products });
   }
+
+  res.status(201).send({ products });
 };
 
 export default getProducts;

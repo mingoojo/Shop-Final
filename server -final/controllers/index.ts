@@ -1,23 +1,24 @@
-import getProducts from './getProducts';
-import getCategories from './getCategories';
-import getProductDetail from './getProductDetail';
-import getUsers from './getUsers';
 import login from './login';
 import signup from './signup';
 import checkToken from './checkToken';
 import logout from './logout';
-import addToCart from './addToCart';
-import getCart from './getCart';
+import getUsers from './getUsers';
+
+import getCategories from './getCategories';
+import createCategory from './createCategory';
+import createProduct from './createProduct';
+import getProducts from './getProducts';
+import getProductDetail from './getProductDetail';
 
 export default {
-  getProducts,
-  getProductDetail,
-  getCategories,
-  getUsers,
   login,
   logout,
   signup,
   checkToken,
-  addToCart,
-  getCart,
+  getUsers,
+  createCategory,
+  getCategories,
+  createProduct,
+  getProducts,
+  getProductDetail,
 };

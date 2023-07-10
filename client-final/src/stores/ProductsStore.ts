@@ -1,45 +1,32 @@
-/* eslint-disable no-console */
 import { singleton } from 'tsyringe';
 import { Action, Store } from 'usestore-ts';
 import apiService from '../services/apiService';
-import { Category, ProductSummary } from '../types';
+import { ProductSummary } from '../types';
 
 @singleton()
 @Store()
-export default class ProductStore {
+export default class productsStore {
   products:ProductSummary[] = [];
-
-  loading = false;
 
   error = false;
 
   async fetchProducts({ categoryId }:{categoryId?:string}) {
-    this.start();
+    this.setError(false);
     try {
       const products = await apiService.fetchProducts({ categoryId });
-      this.done(products);
-    } catch (error) {
-      this.occureError();
+      this.setProducts(products);
+    } catch (err) {
+      this.setError(true);
     }
   }
 
   @Action()
-  start() {
-    this.products = [];
-    this.error = false;
-    this.loading = true;
-  }
-
-  @Action()
-  done(products:ProductSummary[]) {
+  setProducts(products:ProductSummary[]) {
     this.products = products;
-    this.error = false;
-    this.loading = false;
   }
 
   @Action()
-  occureError() {
-    this.error = true;
-    this.loading = false;
+  setError(error:boolean) {
+    this.error = error;
   }
 }

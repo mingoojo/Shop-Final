@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import apiService from '../services/apiService';
 import useAccessToken from './useAccessToken';
 
-export default function useCheckAccessToken() {
+export default function useCheckAccessToken(): void {
   const { accessToken, setAccessToken } = useAccessToken();
+
   useEffect(() => {
     const fetchCurrentUser = async () => {
       try {
@@ -12,8 +13,7 @@ export default function useCheckAccessToken() {
         setAccessToken('');
       }
     };
-    if (accessToken) {
-      fetchCurrentUser();
-    }
+
+    fetchCurrentUser();
   }, [accessToken, setAccessToken]);
 }

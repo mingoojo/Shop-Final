@@ -1,22 +1,17 @@
-import styled from 'styled-components';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import InputBundle from '../ui/InputBundle';
+import styled from 'styled-components';
+import useAccessToken from '../../hooks/useAccessToken';
 import useLoginFormStore from '../../hooks/useLoginFormStore';
 import Button from '../ui/Button';
-import useAccessToken from '../../hooks/useAccessToken';
+import InputBundle from '../ui/InputBundle';
 
 const Container = styled.div`
-
+  
 `;
 
 export default function LoginForm() {
+  const [{ email, password, accessToken }, loginStore] = useLoginFormStore();
   const { setAccessToken } = useAccessToken();
-  const navigate = useNavigate();
-
-  const [{
-    email, password, error, valid, accessToken,
-  }, store] = useLoginFormStore();
 
   useEffect(() => {
     if (accessToken) {
@@ -24,34 +19,24 @@ export default function LoginForm() {
     }
   }, [accessToken]);
 
-  const handleChangeEmail = (value : string) => {
-    store.changeEmail(value);
+  const handleEmail = (value : string) => {
+    loginStore.changeEmail(value);
   };
-
-  const handleChangePassword = (value : string) => {
-    store.changePassword(value);
+  const handlePassword = (value : string) => {
+    loginStore.changePassword(value);
   };
 
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    store.login().then(() => {
-      navigate('/');
-    });
+    loginStore.fetchLogin();
   };
-
   return (
     <Container>
-      <h2>로그인</h2>
       <form onSubmit={handleSubmit}>
-        <InputBundle label="E-mail" value={email} onChange={handleChangeEmail} />
-        <InputBundle label="Password" type="password" value={password} onChange={handleChangePassword} />
-        <Button label="로그인" type="submit" disable={valid} />
+        <InputBundle label="email" placeholder="test@test.com" value={email} onChange={handleEmail} />
+        <InputBundle label="password" type="password" value={password} onChange={handlePassword} />
+        <Button type="submit" label="로그인" />
       </form>
-      {
-        error && (
-          <p>로그인 실패</p>
-        )
-      }
     </Container>
   );
 }

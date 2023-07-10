@@ -36,24 +36,9 @@ class ApiService {
     return data;
   }
 
-  async login({ email, password }:{email : string, password:string}):Promise<string> {
-    const { data } = await this.instance.post('/login', { email, password }, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      withCredentials: true,
-    });
-    const { accessToken } = data;
-    return accessToken;
-  }
-
-  async signup({ email, password, name }:{
-    email:string, password:string, name:string}):Promise<string> {
-    const { data } = await this.instance.post('/signup', { email, password, name }, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      withCredentials: true,
+  async fetchLogin({ email, password }:{email:string, password:string}):Promise<string> {
+    const { data } = await this.instance.post('/login', {
+      email, password,
     });
     const { accessToken } = data;
     return accessToken;
@@ -71,33 +56,6 @@ class ApiService {
     });
     const { products } = data;
     return products;
-  }
-
-  async fetchProduct({ productId }:{productId:string}):Promise<ProductDetail> {
-    const { data } = await this.instance.get(`/products/${productId}`);
-    const { product } = data;
-    return product;
-  }
-
-  async fetchCart():Promise<Cart> {
-    const { data } = await this.instance.get('/cart');
-    const { cartItem } = data;
-    return cartItem;
-  }
-
-  async addProductToCart({ productId, options, quantity }:{
-    productId:string
-    quantity:number
-    options:{
-      id: string,
-      name : string,
-      itemId: string;
-      itemName : string;
-    }[]
-  }):Promise<void> {
-    await this.instance.post('/cart/line-items', {
-      productId, options, quantity,
-    });
   }
 }
 

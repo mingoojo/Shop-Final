@@ -4,12 +4,11 @@ import controllers from '../controllers';
 const router = express.Router();
 
 router.get('/categories', controllers.getCategories);
+router.post('/categories', controllers.createCategory);
 
 router.get('/products', controllers.getProducts);
 router.get('/products/:id', controllers.getProductDetail);
-
-router.get('/cart', controllers.getCart);
-router.post('/cart/line-items', controllers.addToCart);
+router.post('/products', controllers.createProduct);
 
 const productRouter = router;
 export default productRouter;

@@ -9,40 +9,39 @@ export default class LoginFormStore {
 
   password = '';
 
-  error = false;
-
   accessToken = '';
 
-  async login() {
+  error = false;
+
+  async fetchLogin() {
     try {
-      const accessToken = await apiService.login({
-        email: this.email,
-        password: this.password,
-      });
+      const accessToken = await apiService.fetchLogin(
+        { email: this.email, password: this.password },
+      );
       this.setAccessToken(accessToken);
     } catch (err) {
-      this.setError();
+      this.setError(true);
     }
   }
 
   @Action()
-  changeEmail(payload: string) {
-    this.email = payload;
-  }
-
-  @Action()
-  changePassword(payload: string) {
-    this.password = payload;
-  }
-
-  @Action()
-  setAccessToken(accessToken: string) {
+  setAccessToken(accessToken:string) {
     this.accessToken = accessToken;
   }
 
   @Action()
-  setError() {
-    this.error = true;
+  changeEmail(email:string) {
+    this.email = email;
+  }
+
+  @Action()
+  changePassword(password:string) {
+    this.password = password;
+  }
+
+  @Action()
+  setError(error:boolean) {
+    this.error = error;
   }
 
   @Action()
@@ -51,9 +50,5 @@ export default class LoginFormStore {
     this.password = '';
     this.error = false;
     this.accessToken = '';
-  }
-
-  get valid() {
-    return this.email.includes('@') && !!this.password;
   }
 }

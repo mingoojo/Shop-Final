@@ -9,8 +9,5 @@ export default function useAccessToken() {
     apiService.setAccessToken(accessToken);
   }, [accessToken]);
 
-  return {
-    accessToken,
-    setAccessToken,
-  };
+  return { accessToken, setAccessToken };
 }
