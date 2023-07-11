@@ -5,7 +5,7 @@ import { Category } from '../types';
 
 @singleton()
 @Store()
-export default class categoriesStore {
+export default class CategoriesStore {
   categories:Category[] = [];
 
   async fetchCategories() {

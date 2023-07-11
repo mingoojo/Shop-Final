@@ -5,7 +5,7 @@ import { ProductSummary } from '../types';
 
 @singleton()
 @Store()
-export default class productsStore {
+export default class ProductsStore {
   products:ProductSummary[] = [];
 
   error = false;

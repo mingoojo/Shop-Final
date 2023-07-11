@@ -1,20 +1,18 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import useAccessToken from '../../hooks/useAccessToken';
-import useLoginFormStore from '../../hooks/useLoginFormStore';
+import useSignupFormStore from '../../hooks/useSignupFormStore';
 import Button from '../ui/Button';
 import InputBundle from '../ui/InputBundle';
 
 const Container = styled.div`
-  .error{
-    line-height: 7rem;
-  }
+  
 `;
 
-export default function LoginForm() {
+export default function SignupView() {
   const [{
-    email, password, accessToken, error, valid,
-  }, loginStore] = useLoginFormStore();
+    email, name, password, passwordConfirmation, error, accessToken, valid,
+  }, signupStore] = useSignupFormStore();
   const { setAccessToken } = useAccessToken();
 
   useEffect(() => {
@@ -23,24 +21,35 @@ export default function LoginForm() {
     }
   }, [accessToken]);
 
-  const handleEmail = (value : string) => {
-    loginStore.changeEmail(value);
+  const handleName = (value:string) => {
+    signupStore.changeName(value);
   };
-  const handlePassword = (value : string) => {
-    loginStore.changePassword(value);
+
+  const handleEmail = (value:string) => {
+    signupStore.changeEmail(value);
+  };
+
+  const handlePassword = (value:string) => {
+    signupStore.changePassword(value);
+  };
+
+  const handlePasswordConfirmation = (value:string) => {
+    signupStore.changePasswordConfirmation(value);
   };
 
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    loginStore.fetchLogin();
+    signupStore.fetchSignup();
   };
 
   return (
     <Container>
       <form onSubmit={handleSubmit}>
+        <InputBundle label="name" value={name} onChange={handleName} />
         <InputBundle label="email" placeholder="test@test.com" value={email} onChange={handleEmail} />
         <InputBundle label="password" type="password" value={password} onChange={handlePassword} />
-        <Button type="submit" label="로그인" disable={valid} />
+        <InputBundle label="password" type="password" value={passwordConfirmation} onChange={handlePasswordConfirmation} />
+        <Button type="submit" label="가입하기" disable={valid} />
       </form>
       {error && <p className="error">로그인이 실패하였습니다.</p>}
     </Container>

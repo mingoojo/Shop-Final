@@ -6,15 +6,15 @@ import useLoginFormStore from '../hooks/useLoginFormStore';
 export default function LoginPage() {
   const navigate = useNavigate();
 
-  const [{ accessToken }, store] = useLoginFormStore();
+  const [{ accessToken }, loginStore] = useLoginFormStore();
 
   useEffect(() => {
-    store.reset();
+    loginStore.reset();
   }, []);
 
   useEffect(() => {
     if (accessToken) {
-      store.reset();
+      loginStore.reset();
       navigate('/');
     }
   }, [accessToken]);

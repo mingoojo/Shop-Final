@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { container } from 'tsyringe';
 import { useStore } from 'usestore-ts';
-import productsStore from '../stores/productsStore';
+import ProductsStore from '../stores/ProductsStore';
 
 export default function useFetchProducts({ categoryId }:{categoryId?:string}) {
-  const store = container.resolve(productsStore);
+  const store = container.resolve(ProductsStore);
   const [{ products }, Store] = useStore(store);
 
   useEffect(() => {
