@@ -9,6 +9,9 @@ import createCategory from './createCategory';
 import createProduct from './createProduct';
 import getProducts from './getProducts';
 import getProductDetail from './getProductDetail';
+import createCart from './createCart';
+import getCart from './getCart';
+import createOrder from './createOrder';
 
 export default {
   login,
@@ -21,4 +24,7 @@ export default {
   createProduct,
   getProducts,
   getProductDetail,
+  createCart,
+  getCart,
+  createOrder,
 };

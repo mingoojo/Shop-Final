@@ -3,7 +3,6 @@ import Option from './Option';
 
 export default function Options() {
   const [{ options, selectedOptionItems }] = useProductFormStore();
-  console.log(options);
   return (
     <div>
       {

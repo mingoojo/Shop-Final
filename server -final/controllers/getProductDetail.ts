@@ -10,7 +10,7 @@ const getProductDetail = async (req:Request, res:Response, next:NextFunction) =>
     productDetail = await ProductDetail.findOne({ id });
   } catch (err) {
     const error = new HttpError(
-      'Creating Product failed, please try again.',
+      'Cannot find a Product Detail, please try again.',
       500,
     );
     return next(error);

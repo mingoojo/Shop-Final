@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
-  Category, ProductDetail, ProductSelectedOption, ProductSummary,
+  CartProduct,
+  Category, ProductDetail, ProductSelectedOption, ProductSummary, Receiver,
 } from '../types';
 
 const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
@@ -76,6 +77,26 @@ class ApiService {
   async addProductToCart({ productId, options, quantity }:{
     productId:string, options:ProductSelectedOption[], quantity:number, }):Promise<void> {
     await this.instance.post('/cart', { productId, options, quantity });
+  }
+
+  async fetchCart():Promise<CartProduct[]> {
+    const { data } = await this.instance.get('/cart');
+    const { cartItems } = data;
+    return cartItems;
+  }
+
+  async fetchOrder({
+    merchantId, transactionId, cartItem, totalPrice, receiver,
+  }:{
+    merchantId:string,
+    transactionId:string,
+    cartItem:CartProduct[],
+    totalPrice:number,
+    receiver:Receiver
+  }):Promise<void> {
+    await this.instance.post('/order', {
+      merchantId, transactionId, cartItem, totalPrice, receiver,
+    });
   }
 }
 

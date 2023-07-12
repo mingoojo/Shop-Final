@@ -9,7 +9,7 @@ const getCategories = async (req:Request, res:Response, next:NextFunction) => {
     categories = await Categories.find();
   } catch (err) {
     const error = new HttpError(
-      'Creating Category failed, please try again.',
+      'Cannot find a Category, please try again.',
       500,
     );
     return next(error);

@@ -10,5 +10,10 @@ router.get('/products', controllers.getProducts);
 router.get('/products/:id', controllers.getProductDetail);
 router.post('/products', controllers.createProduct);
 
+router.get('/cart', controllers.getCart);
+router.post('/cart', controllers.createCart);
+
+router.post('/order', controllers.createOrder);
+
 const productRouter = router;
 export default productRouter;

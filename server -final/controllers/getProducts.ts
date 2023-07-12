@@ -11,7 +11,7 @@ const getProducts = async (req:Request, res:Response, next:NextFunction) => {
       products = await Product.find({ 'category.id': categoryId });
     } catch (err) {
       const error = new HttpError(
-        'Creating Product failed, please try again.',
+        'Cannot find a Product, please try again.',
         500,
       );
       return next(error);
@@ -21,7 +21,7 @@ const getProducts = async (req:Request, res:Response, next:NextFunction) => {
       products = await Product.find();
     } catch (err) {
       const error = new HttpError(
-        'Creating Product failed, please try again.',
+        'Cannot find a Product, please try again.',
         500,
       );
       return next(error);

@@ -49,6 +49,31 @@ export const nullProductDetail: ProductDetail = {
   options: [],
 };
 
+export type CartProductOption = {
+  kind: string;
+  items: ProductOptionItem;
+};
+
+export type CartProduct = {
+  id: string
+  name: string
+  productId:string
+  image: string
+  category: Category
+  options: CartProductOption[]
+  quantity:number
+  unitPrice:number
+  totalPrice: number
+};
+
+export type Receiver = {
+  name: string
+  address1: string
+  address2: string
+  postalCode: string
+  phoneNumber: string
+}
+
 // export type OrderOptionItem = {
 //   name: string;
 // };
