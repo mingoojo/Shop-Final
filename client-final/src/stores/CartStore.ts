@@ -20,6 +20,16 @@ export default class CartStore {
     }
   }
 
+  async fetchDeleteCart() {
+    this.setError(false);
+    try {
+      await apiService.fetchDeleteCart();
+      this.setCartItem([]);
+    } catch (error) {
+      this.setError(true);
+    }
+  }
+
   @Action()
   setCartItem(cartItem: CartProduct[]) {
     this.cartItem = cartItem;

@@ -74,6 +74,60 @@ export type Receiver = {
   phoneNumber: string
 }
 
+export type CartProductSum = {
+  id: string
+  name: string
+  productId:string
+  image: string
+  category: Category
+  options: CartProductOption[]
+  quantity:number
+  unitPrice:number
+  totalPrice: number
+};
+
+export type OrderDetail = {
+  id: string
+  transactionId: string
+  email:string
+  cartItem: CartProductSum[]
+  totalPrice: number
+  receiver : Receiver
+}
+
+export const nullOrderDetail: OrderDetail = {
+  id: '',
+  transactionId: '',
+  email: '',
+  totalPrice: 0,
+  receiver: {
+    name: '',
+    address1: '',
+    address2: '',
+    postalCode: '',
+    phoneNumber: '',
+  },
+  cartItem: [{
+    id: '',
+    name: '',
+    productId: '',
+    image: '',
+    category: { id: '', name: '' },
+    options: [],
+    quantity: 0,
+    unitPrice: 0,
+    totalPrice: 0,
+  }],
+};
+
+export type OrderSummary = {
+  id: string;
+  title: string;
+  totalPrice: number;
+  status: string;
+  orderedAt: string;
+}
+
 // export type OrderOptionItem = {
 //   name: string;
 // };
@@ -98,14 +152,6 @@ export type Receiver = {
 // export type Cart = {
 //   lineItems: LineItem[];
 //   totalPrice: number;
-// }
-
-// export type OrderSummary = {
-//   id: string;
-//   title: string;
-//   totalPrice: number;
-//   status: string;
-//   orderedAt: string;
 // }
 
 // export type OrderDetail = {

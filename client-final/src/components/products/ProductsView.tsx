@@ -8,6 +8,10 @@ type ProductsViewProps = {
 }
 
 const Container = styled.div`
+  h1{
+    font-weight: bold;
+    font-size: 2rem;
+  }
   ul{
     width: 100%;
     display: flex;
@@ -26,6 +30,7 @@ const Container = styled.div`
 export default function ProductsView({ products }:ProductsViewProps) {
   return (
     <Container>
+      <h1>상품보기</h1>
       <ul>
         {
           products.map((product) => (

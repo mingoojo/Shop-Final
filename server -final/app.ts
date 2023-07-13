@@ -8,7 +8,8 @@ import mongoose from 'mongoose';
 import HttpError from './error/HttpError';
 import { Err } from './types';
 import productRouter from './router/productRouter';
-import AuthenticationRouter from './router/AuthenticationRouter';
+import authenticationRouter from './router/authenticationRouter';
+import adminRouter from './router/adminRouter';
 
 dotenv.config();
 
@@ -16,13 +17,14 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:8000',
+  origin: ['http://localhost:8000', 'http://localhost:8080'],
   methods: ['GET', 'POST', 'DELETE', 'PATCH'],
   credentials: true,
 }));
 
+app.use(adminRouter);
 app.use(productRouter);
-app.use(AuthenticationRouter);
+app.use(authenticationRouter);
 
 // when the route is wrong
 app.use((req:Request, res:Response, next:NextFunction) => {

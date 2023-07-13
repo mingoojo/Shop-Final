@@ -7,8 +7,8 @@ import Header from './default/Header';
 const Container = styled.div`
   .headerBox{
     border-bottom: 1px solid #222;
-    position: fixed;
     background-color: ${(props) => props.theme.colors.backgroundMain};
+    position: fixed;
     width: 100vw;
   }
   .mainBody{

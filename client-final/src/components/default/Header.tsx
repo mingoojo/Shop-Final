@@ -7,6 +7,9 @@ import ButtonHover from '../ui/ButtonHover';
 const Container = styled.header`
   margin-block: 1rem;
   padding: 0rem 5rem 0rem 5rem;
+  a:hover{
+    text-decoration: underline;
+  }
   h1{
     font-size: 3rem;
   }
@@ -18,6 +21,26 @@ const Container = styled.header`
       margin-block: 1rem;
       li{
         margin-right: 1rem;
+        .list{
+          li{
+            padding: .5rem;
+          }
+          padding: 1rem;
+          background-color: ${(props) => props.theme.colors.backgroundMain};
+          border: 2px solid #222;
+          position: absolute;
+          display: none;
+          flex-direction: column;
+          transform: translateY(-8px);
+        }
+
+        .productHeader:hover + .list{
+          display: flex;
+        }
+
+        .list:hover{
+          display: flex;
+        }
       }
     }
   }
@@ -38,11 +61,11 @@ export default function Header() {
       <nav>
         <ul>
           <li>
-            <Link to="/">home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/products">products</Link>
-            <ul>
+            <Link to="/products" className="productHeader">Products</Link>
+            <ul className="list">
               {
                 categories.map((category) => (
                   <li key={category.id}>
@@ -54,28 +77,31 @@ export default function Header() {
               }
             </ul>
           </li>
-          {
-            accessToken ? (
-              <>
-                <li>
-                  <Link to="/cart">cart</Link>
-                </li>
-                <li>
-                  <ButtonHover label="logout" onClick={handleClickLogout} />
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/login">login</Link>
-                </li>
-                <li>
-                  <Link to="/signup">signup</Link>
-                </li>
-              </>
-            )
-          }
         </ul>
+        {
+          accessToken ? (
+            <ul>
+              <li>
+                <Link to="/cart">Cart</Link>
+              </li>
+              <li>
+                <Link to="/orders">Orders</Link>
+              </li>
+              <li>
+                <ButtonHover label="Log out" onClick={handleClickLogout} />
+              </li>
+            </ul>
+          ) : (
+            <ul>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/signup">Signup</Link>
+              </li>
+            </ul>
+          )
+        }
       </nav>
     </Container>
   );

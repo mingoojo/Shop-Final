@@ -11,9 +11,18 @@ type CartTableProps = {
 const Container = styled.div`
   table{
     width: 100%;
+    tr{
+      td{
+        padding: 0.5rem;
+      }
+      .item{
+        text-align: end;
+      }
+    }
   }
-  td{
-    padding: 0.5rem;
+
+  div{
+    text-align: end;
   }
 `;
 
@@ -31,13 +40,13 @@ export default function CartTable({ cartItem }:CartTableProps) {
             <td>
               제품명
             </td>
-            <td>
+            <td className="item">
               단가
             </td>
-            <td>
+            <td className="item">
               수량
             </td>
-            <td>
+            <td className="item">
               가격
             </td>
           </tr>
@@ -54,14 +63,16 @@ export default function CartTable({ cartItem }:CartTableProps) {
             <td colSpan={3}>
               합계
             </td>
-            <td>
+            <td className="item">
               {totalPrice.toLocaleString()}
               원
             </td>
           </tr>
         </tfoot>
       </table>
-      <Button label="주문하기" onClick={handleClick} />
+      <div>
+        <Button label="주문하기" onClick={handleClick} />
+      </div>
     </Container>
   );
 }

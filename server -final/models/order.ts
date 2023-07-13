@@ -7,6 +7,7 @@ const orderSchema = new mongoose.Schema<Order>({
   totalPrice: { type: Number, required: true },
   status: { type: String, required: true },
   orderedAt: { type: String, required: true },
+  email: { type: String, required: true },
 });
 
 const Order = mongoose.model<Order>('order', orderSchema);

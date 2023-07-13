@@ -16,6 +16,7 @@ export default function OrderView() {
 
   return (
     <div>
+      <h1>주문 작성</h1>
       <OrderTable cartItem={cartItem} totalPrice={totalPrice} />
       <ShippingForm />
       <PaymentButton cartItem={cartItem} totalPrice={totalPrice} />

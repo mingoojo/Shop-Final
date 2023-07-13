@@ -5,25 +5,33 @@ type ProductProps = {
   product : ProductSummary
 }
 
-const Thumbnail = styled.img.attrs({
-  alt: 'Thumbnail',
-})`
-display: block;
-width: 100%;
-aspect-ratio: 1/1;
+const Container = styled.div`
+  img{
+    display: block;
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+  .productName{
+    margin-block: 1rem;
+    font-weight: 500;
+    line-height: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 export default function Product({ product }:ProductProps) {
   return (
-    <div>
-      <Thumbnail src={`${product.image}`} />
-      <div>
+    <Container>
+      <img src={`${product.image}`} alt="Thumbnail" />
+      <div className="productName">
         {product.name}
       </div>
-      <div>
+      <div className="productPrice">
         {product.price.toLocaleString()}
         원
       </div>
-    </div>
+    </Container>
   );
 }

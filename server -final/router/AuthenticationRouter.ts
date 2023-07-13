@@ -21,5 +21,5 @@ router.post('/signup', [
 
 router.get('/users/me', controllers.checkToken);
 
-const AuthenticationRouter = router;
-export default AuthenticationRouter;
+const authenticationRouter = router;
+export default authenticationRouter;

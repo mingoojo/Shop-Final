@@ -3,10 +3,9 @@ import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import HttpError from '../error/HttpError';
-import CartProduct from '../models/cartProduct';
 import Order from '../models/order';
 import OrderDetail from '../models/orderDetail';
-import { CartProductSum, VerifiedData } from '../types';
+import { VerifiedData } from '../types';
 
 dotenv.config();
 const ACCESS_SECRET = process.env.ACCESS_SECRET || '';
@@ -30,18 +29,6 @@ const createOrder = async (req:Request, res:Response, next:NextFunction) => {
     return next(error);
   }
 
-  // try {
-  //   cart = await cartItem.map((item:CartProductSum) => (
-  //     CartProduct.find({ id: item.id })
-  //   ));
-  // } catch (err) {
-  //   const error = new HttpError(
-  //     'Cannot find a cart Product, please try again.',
-  //     500,
-  //   );
-  //   return next(error);
-  // }
-
   const today = new Date();
   const orderedAt = `${today.toLocaleDateString()}-${today.toLocaleTimeString()}`;
 
@@ -51,6 +38,7 @@ const createOrder = async (req:Request, res:Response, next:NextFunction) => {
     totalPrice,
     status: 'paid',
     orderedAt,
+    email: verified.email,
   });
 
   const OrderDetailItem = new OrderDetail({

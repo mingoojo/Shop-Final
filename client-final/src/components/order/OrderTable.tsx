@@ -10,9 +10,14 @@ type OrderTableProps = {
 const Container = styled.div`
   table{
     width: 100%;
-  }
-  td{
-    padding: 0.5rem;
+    tr{
+      td{
+        padding: 0.5rem;
+      }
+      .item{
+        text-align: end;
+      }
+    }
   }
 `;
 
@@ -25,13 +30,13 @@ export default function OrderTable({ cartItem, totalPrice }:OrderTableProps) {
             <td>
               제품명
             </td>
-            <td>
+            <td className="item">
               단가
             </td>
-            <td>
+            <td className="item">
               수량
             </td>
-            <td>
+            <td className="item">
               가격
             </td>
           </tr>
@@ -48,7 +53,7 @@ export default function OrderTable({ cartItem, totalPrice }:OrderTableProps) {
             <td colSpan={3}>
               합계
             </td>
-            <td>
+            <td className="item">
               {totalPrice.toLocaleString()}
               원
             </td>

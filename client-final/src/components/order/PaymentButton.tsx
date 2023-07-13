@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useOrderFormStore from '../../hooks/useOrderFormStore';
 import usePayment from '../../hooks/usePayment';
-import apiService from '../../services/apiService';
 import { CartProduct } from '../../types';
 import Button from '../ui/Button';
+import useCartStore from '../../hooks/useCartStore';
 
 const Container = styled.div`
+margin-block: 2rem;
+text-align: center;
   p {
     margin-block: 2rem;
     color: ${(props) => props.theme.colors.primary};
@@ -24,6 +26,7 @@ type PaymentButtonProps = {
 export default function PaymentButton({ cartItem, totalPrice }: PaymentButtonProps) {
   const navigate = useNavigate();
   const [{ valid }, orderFormStore] = useOrderFormStore();
+  const [, cartStore] = useCartStore();
   const { requestPayment } = usePayment(cartItem);
   const [error, setError] = useState('');
 
@@ -35,9 +38,7 @@ export default function PaymentButton({ cartItem, totalPrice }: PaymentButtonPro
       orderFormStore.fetchOrder({
         merchantId, transactionId, cartItem, totalPrice,
       });
-      // console.log(merchantId, transactionId);
-      // console.log(cartItem);
-      // console.log(totalPrice);
+      cartStore.fetchDeleteCart();
       navigate('/order/complete');
     } catch (e) {
       if (e instanceof Error) {

@@ -18,6 +18,9 @@ const Container = styled.div`
   }
   article{
     width: 60%;
+    h2{
+      font-weight: bold;
+    }
   }
 `;
 

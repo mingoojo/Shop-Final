@@ -20,6 +20,13 @@ export type User = {
   password: string
 }
 
+export type Admin = {
+  id: string
+  name: string,
+  email: string
+  password: string
+}
+
 export type Category = {
   id: string;
   name: string;
@@ -95,6 +102,7 @@ export type Order = {
   totalPrice: number,
   status: string,
   orderedAt: string,
+  email:string
 }
 
 export type OrderDetail = {
