@@ -16,6 +16,10 @@ import getOrders from './getOrders';
 import getOrderDetail from './getOrderDetail';
 import adminLogin from './adminLogin';
 import adminSignup from './adminSignup';
+import getCategoriesAdmin from './getCategoriesAdmin';
+import getCategoryAdmin from './getCategoryAdmin';
+import updateCategory from './updateCategory';
+import getOrdersAdmin from './getOrdersAdmin';
 
 export default {
   login,
@@ -36,4 +40,8 @@ export default {
   getOrderDetail,
   adminLogin,
   adminSignup,
+  getCategoriesAdmin,
+  getCategoryAdmin,
+  updateCategory,
+  getOrdersAdmin,
 };

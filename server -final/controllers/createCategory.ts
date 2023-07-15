@@ -7,7 +7,7 @@ const createCategory = async (req:Request, res:Response, next:NextFunction) => {
   const id = `CAT-${Math.random().toString(36).substr(2, 16)}`;
   const { name } = req.body;
 
-  const newCategories = new Categories({ id, name });
+  const newCategories = new Categories({ id, name, hidden: true });
 
   try {
     await newCategories.save();

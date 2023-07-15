@@ -1,0 +1,93 @@
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import STATUS_MESSAGES from '../contants';
+import useFetchOrders from '../hooks/useFetchOrders';
+
+const Container = styled.div`
+  h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  table {
+    th, td {
+      padding: 1rem;
+      text-align: left;
+    }
+
+    th {
+      border-bottom: .1rem solid ${(props) => props.theme.colors.secondary}
+    }
+
+    img {
+      width: 10rem;
+      vertical-align: middle;
+    }
+
+    a {
+      display: block;
+      margin-bottom: 1rem;
+    }
+  }
+
+  > a {
+    display: inline-block;
+    margin-block: 1rem;
+  }
+`;
+
+export default function OrderListPage() {
+  const { orders, loading, error } = useFetchOrders();
+
+  console.log(orders);
+
+  if (loading) {
+    return (
+      <p>Loading...</p>
+    );
+  }
+
+  if (error) {
+    return (
+      <p>Error!</p>
+    );
+  }
+
+  return (
+    <Container>
+      <h2>Orders</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>주문일</th>
+            <th>상품</th>
+            <th>총 가격</th>
+            <th>상태</th>
+            <th>행동</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map((order) => (
+            <tr key={order.id}>
+              <td>{order.orderedAt}</td>
+              <td>{order.title}</td>
+              <td>
+                {(order.totalPrice).toLocaleString()}
+                원
+              </td>
+              <td>{STATUS_MESSAGES[order.status]}</td>
+              <td>
+                <Link to={`/orders/${order.id}`}>
+                  자세히
+                </Link>
+                <Link to={`/orders/${order.id}/edit`}>
+                  상태 변경
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </Container>
+  );
+}

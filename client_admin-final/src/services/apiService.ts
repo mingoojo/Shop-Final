@@ -41,6 +41,15 @@ class ApiService {
     return accessToken;
   }
 
+  async createCategory({ name }:{name:string}):Promise<void> {
+    await this.instance.post('/categories', { name });
+  }
+
+  async updateCategory({ categoryId, name, hidden }:{
+    categoryId:string, hidden:boolean, name:string}):Promise<void> {
+    await this.instance.post('/categories/edit', { name, categoryId, hidden });
+  }
+
   fetcher() {
     return async (url: string) => {
       const { data } = await this.instance.get(url);

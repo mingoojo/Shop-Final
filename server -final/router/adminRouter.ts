@@ -18,8 +18,14 @@ router.post('/admin/signup', [
 router.get('/admin/users/me', controllers.checkToken);
 
 router.get('/admin/users', controllers.getUsers);
+router.get('/admin/categories', controllers.getCategoriesAdmin);
+router.get('/admin/categories/:id', controllers.getCategoryAdmin);
+router.post('/admin/categories', controllers.createCategory);
+router.post('/admin/categories/edit', controllers.updateCategory);
 
-// router.delete('/logout', controllers.logout);
+router.get('/admin/orders', controllers.getOrdersAdmin);
+
+router.get('/admin/orders/:id', controllers.getOrderDetail);
 
 const adminRouter = router;
 export default adminRouter;

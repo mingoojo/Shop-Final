@@ -30,6 +30,7 @@ export type Admin = {
 export type Category = {
   id: string;
   name: string;
+  hidden : boolean
 }
 
 export type Product = {

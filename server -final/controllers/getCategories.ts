@@ -6,7 +6,9 @@ import HttpError from '../error/HttpError';
 const getCategories = async (req:Request, res:Response, next:NextFunction) => {
   let categories;
   try {
-    categories = await Categories.find();
+    categories = await (await Categories.find()).filter((category) => (
+      category.hidden === false
+    ));
   } catch (err) {
     const error = new HttpError(
       'Cannot find a Category, please try again.',
@@ -15,6 +17,12 @@ const getCategories = async (req:Request, res:Response, next:NextFunction) => {
     return next(error);
   }
 
+  categories = categories.map((category) => (
+    {
+      name: category.name,
+      id: category.id,
+    }
+  ));
   res.status(200).send({ categories });
 };
 
