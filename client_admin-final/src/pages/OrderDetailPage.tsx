@@ -120,10 +120,20 @@ export default function OrderDetailPage() {
             {Order.transactionId}
           </p>
         </dd>
+        <dt>상태</dt>
+        <dd>{STATUS_MESSAGES[Order.status]}</dd>
       </dl>
-      <Link to={`/orders/${Order.id}/edit`}>
-        상태 변경
-      </Link>
+      <p>
+        <Link to={`/orders/${Order.id}/edit`}>
+          상태 변경
+        </Link>
+        {' '}
+        |
+        {' '}
+        <Link to="/orders">
+          주문 목록
+        </Link>
+      </p>
     </Container>
   );
 }

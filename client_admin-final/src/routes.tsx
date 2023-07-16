@@ -5,6 +5,7 @@ import CategoryNewPage from './pages/CategoryNewPage';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import OrderDetailPage from './pages/OrderDetailPage';
+import OrderEditPage from './pages/OrderEditPage';
 import OrderListPage from './pages/OrderListPage';
 import UserListPage from './pages/UserListPage';
 
@@ -20,6 +21,7 @@ const routes = [
       { path: '/categories/:id/edit', element: <CategoryEditPage /> },
       { path: '/orders', element: <OrderListPage /> },
       { path: '/orders/:id', element: <OrderDetailPage /> },
+      { path: '/orders/:id/edit', element: <OrderEditPage /> },
     ],
   },
 ];

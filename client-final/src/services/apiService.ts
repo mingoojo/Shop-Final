@@ -6,7 +6,7 @@ import {
   ProductSelectedOption, ProductSummary, Receiver,
 } from '../types';
 
-const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+const apiBaseUrl = 'http://localhost:3000';
 
 class ApiService {
   private instance = axios.create({

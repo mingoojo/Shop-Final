@@ -54,4 +54,5 @@ export type OrderDetail = {
   cartItem: CartProductSum[]
   totalPrice: number
   receiver : Receiver
+  status : string
 }

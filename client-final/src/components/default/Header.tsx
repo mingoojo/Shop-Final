@@ -1,8 +1,7 @@
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import useAccessToken from '../../hooks/useAccessToken';
-import useFetchCategories from '../../hooks/useFetchCategories';
-import ButtonHover from '../ui/ButtonHover';
+import useCategoriesStore from '../../hooks/useCategoriesStore';
 
 const Container = styled.header`
   margin-block: 1rem;
@@ -48,13 +47,12 @@ const Container = styled.header`
 
 export default function Header() {
   const navigate = useNavigate();
-  const { accessToken, setAccessToken } = useAccessToken();
-  const { categories } = useFetchCategories();
+  const [{ categories }, categoriesStore] = useCategoriesStore();
 
-  const handleClickLogout = () => {
-    navigate('/');
-    setAccessToken('');
-  };
+  useEffect(() => {
+    categoriesStore.fetchCategories();
+  }, []);
+
   return (
     <Container>
       <h1>shop</h1>
@@ -78,30 +76,6 @@ export default function Header() {
             </ul>
           </li>
         </ul>
-        {
-          accessToken ? (
-            <ul>
-              <li>
-                <Link to="/cart">Cart</Link>
-              </li>
-              <li>
-                <Link to="/orders">Orders</Link>
-              </li>
-              <li>
-                <ButtonHover label="Log out" onClick={handleClickLogout} />
-              </li>
-            </ul>
-          ) : (
-            <ul>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/signup">Signup</Link>
-              </li>
-            </ul>
-          )
-        }
       </nav>
     </Container>
   );

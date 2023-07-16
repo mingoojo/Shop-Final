@@ -56,6 +56,13 @@ class ApiService {
       return data;
     };
   }
+
+  async updateOrder({ orderId, status }: {
+    orderId: string;
+    status: string;
+  }) {
+    await this.instance.post(`/orders/${orderId}`, { status });
+  }
 }
 
 const apiService = new ApiService();

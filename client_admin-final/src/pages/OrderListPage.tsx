@@ -39,8 +39,6 @@ const Container = styled.div`
 export default function OrderListPage() {
   const { orders, loading, error } = useFetchOrders();
 
-  console.log(orders);
-
   if (loading) {
     return (
       <p>Loading...</p>
