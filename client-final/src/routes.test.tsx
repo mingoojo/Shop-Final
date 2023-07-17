@@ -2,8 +2,6 @@ import {
   render, screen, waitFor,
 } from '@testing-library/react';
 
-import { act } from 'react-dom/test-utils';
-
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import defaultTheme from './styles/defaultTheme';

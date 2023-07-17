@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import useAccessToken from '../../hooks/useAccessToken';
 import useCategoriesStore from '../../hooks/useCategoriesStore';
 
 const Container = styled.header`
@@ -48,10 +49,16 @@ const Container = styled.header`
 export default function Header() {
   const navigate = useNavigate();
   const [{ categories }, categoriesStore] = useCategoriesStore();
+  const { accessToken, setAccessToken } = useAccessToken();
 
   useEffect(() => {
     categoriesStore.fetchCategories();
   }, []);
+
+  const handleLogout = () => {
+    setAccessToken('');
+    navigate('/');
+  };
 
   return (
     <Container>
@@ -75,6 +82,30 @@ export default function Header() {
               }
             </ul>
           </li>
+          {
+            accessToken ? (
+              <>
+                <li>
+                  <Link to="/cart">Cart</Link>
+                </li>
+                <li>
+                  <Link to="/orders">Orders</Link>
+                </li>
+                <li>
+                  <button onClick={handleLogout} type="button">logout</button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link to="/signup">Signup</Link>
+                </li>
+              </>
+            )
+          }
         </ul>
       </nav>
     </Container>

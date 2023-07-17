@@ -25,6 +25,10 @@ const handlers = [
     res(ctx.json({ products: productSummaries }))
   )),
 
+  rest.get('http://localhost:3000/users/me', (req, res, ctx) => (
+    res(ctx.json({ id: 'USER-ID', name: 'tester' }))
+  )),
+
   rest.get('http://localhost:3000/categories/products/:id', (req, res, ctx) => {
     const product = fixtures.products.find((i) => i.id === req.params.id);
     if (!product) {
