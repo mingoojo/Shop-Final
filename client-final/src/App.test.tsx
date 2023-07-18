@@ -1,9 +1,14 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 
+import { act } from 'react-dom/test-utils';
 import App from './App';
 
-test('App', () => {
-  render(<App />);
+test('App', async () => {
+  await act(() => {
+    render(<App />);
+  });
 
-  screen.getByText(/Home page/);
+  await waitFor(() => {
+    screen.getByText(/Home page/);
+  });
 });

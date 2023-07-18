@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-margin-block: 1rem;
+margin: 1rem 1rem 1rem 0rem ;
   label{
     text-align: left;
     p{

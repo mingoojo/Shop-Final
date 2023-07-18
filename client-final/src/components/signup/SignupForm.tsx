@@ -49,7 +49,7 @@ export default function SignupForm() {
         <InputBundle value={name} label="name" onChange={handleName} />
         <InputBundle value={email} label="email" placeholder="test@test.com" onChange={handleEmail} />
         <InputBundle value={password} label="password" type="password" onChange={handlePassword} />
-        <InputBundle value={passwordConfirmation} label="password" type="password" onChange={handlePasswordConfirmation} />
+        <InputBundle value={passwordConfirmation} label="passwordConfirmation" type="password" onChange={handlePasswordConfirmation} />
         <Button label="가입하기" type="submit" disable={valid} />
       </form>
       {

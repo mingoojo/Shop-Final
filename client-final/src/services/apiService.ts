@@ -104,16 +104,16 @@ class ApiService {
   }
 
   async fetchOrder({
-    merchantId, transactionId, cartItem, totalPrice, receiver,
+    merchantId, transactionId, cart, totalPrice, receiver,
   }:{
     merchantId:string,
     transactionId:string,
-    cartItem:CartProduct[],
+    cart:CartProduct[],
     totalPrice:number,
     receiver:Receiver
   }):Promise<void> {
     await this.instance.post('/order', {
-      merchantId, transactionId, cartItem, totalPrice, receiver,
+      merchantId, transactionId, cart, totalPrice, receiver,
     });
   }
 }

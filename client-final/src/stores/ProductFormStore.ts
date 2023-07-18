@@ -1,8 +1,11 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 import { singleton } from 'tsyringe';
 import { Action, Store } from 'usestore-ts';
 import {
   nullProductDetail, ProductDetail, ProductOption, ProductOptionItem,
 } from '../types';
+import apiService from '../services/apiService';
 
 @singleton()
 @Store()
@@ -19,8 +22,44 @@ export default class ProductFormStore {
 
   done = false;
 
-  get Price() {
+  get price() {
     return this.quantity * this.product.price;
+  }
+
+  async addToCart() {
+    this.setDone(false);
+    await apiService.addProductToCart({
+      productId: this.productId,
+      options: this.options.map((option, index) => ({
+        kind: option.kind,
+        items: this.selectedOptionItems[index],
+      })),
+      quantity: this.quantity,
+    });
+    this.complete();
+  }
+
+  @Action()
+  changeSelectedOptionItems({ value, index }:{value:string, index:number}) {
+    const establishedItems = this.selectedOptionItems;
+    this.selectedOptionItems = establishedItems.map((item, i) => {
+      if (i !== index) {
+        return item;
+      } if (i === index) {
+        return { ...item, name: value };
+      }
+    }) as ProductOptionItem[];
+  }
+
+  @Action()
+  complete() {
+    this.quantity = 1;
+    this.done = true;
+  }
+
+  @Action()
+  setDone(done:boolean) {
+    this.done = done;
   }
 
   @Action()

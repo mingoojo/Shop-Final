@@ -12,7 +12,7 @@ const ACCESS_SECRET = process.env.ACCESS_SECRET || '';
 
 const createOrder = async (req:Request, res:Response, next:NextFunction) => {
   const {
-    merchantId, transactionId, cartItem, totalPrice, receiver,
+    merchantId, transactionId, cart, totalPrice, receiver,
   } = req.body;
 
   let verified;
@@ -34,7 +34,7 @@ const createOrder = async (req:Request, res:Response, next:NextFunction) => {
 
   const OrderItem = new Order({
     id: merchantId,
-    title: cartItem[0].name,
+    title: cart[0].name,
     totalPrice,
     status: 'paid',
     orderedAt,
@@ -44,7 +44,7 @@ const createOrder = async (req:Request, res:Response, next:NextFunction) => {
   const OrderDetailItem = new OrderDetail({
     id: merchantId,
     transactionId,
-    cartItem,
+    cartItem: cart,
     totalPrice,
     receiver,
     status: 'paid',

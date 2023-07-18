@@ -8,7 +8,7 @@ type ButtonProps = {
 }
 
 const ButtonItem = styled.button`
-margin-top: 1rem;
+margin-block: 1rem;
 font-family: 'GmarketSansMedium';
 border-radius: 0.5rem;
 background-color: ${(props) => props.theme.colors.primary};

@@ -24,7 +24,7 @@ const Container = styled.div`
 export default function Product({ product }:ProdcutProps) {
   return (
     <Container>
-      <img src={`${product.image}`} alt="Thumbnail" />
+      <img className="thumbnail" src={`${product.image}`} alt="Thumbnail" />
       <div className="productName">
         {product.name}
       </div>

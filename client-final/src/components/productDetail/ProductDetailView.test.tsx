@@ -14,7 +14,6 @@ test('ProductDetail', async () => {
   const store = container.resolve(ProductDetailStore);
 
   await store.fetchProductDetail({ productId: product.id });
-
   render(<ProductDetailView product={product} />);
 
   screen.getByText(product.name);

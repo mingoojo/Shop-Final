@@ -14,7 +14,7 @@ export default function SignupPage() {
   useEffect(() => {
     if (accessToken) {
       signupFormStore.reset();
-      navigate('/');
+      navigate('/signup/complete');
     }
   }, [accessToken]);
 

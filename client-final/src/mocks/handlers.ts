@@ -21,8 +21,24 @@ const handlers = [
     res(ctx.json({ products: productSummaries }))
   )),
 
+  rest.post('http://localhost:3000/login', (req, res, ctx) => (
+    res(ctx.json({ accessToken: 'accessToken-test' }))
+  )),
+
+  rest.post('http://localhost:3000/signup', (req, res, ctx) => (
+    res(ctx.json({ accessToken: 'accessToken-test' }))
+  )),
+
+  rest.get('http://localhost:3000/products/:id', (req, res, ctx) => (
+    res(ctx.json({ productDetail: fixtures.products[0] }))
+  )),
+
   rest.get('http://localhost:3000/categories/products', (req, res, ctx) => (
     res(ctx.json({ products: productSummaries }))
+  )),
+
+  rest.get('http://localhost:3000/cart', (req, res, ctx) => (
+    res(ctx.json({ cartItems: fixtures.cart }))
   )),
 
   rest.get('http://localhost:3000/users/me', (req, res, ctx) => (
