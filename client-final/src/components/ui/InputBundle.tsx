@@ -32,7 +32,7 @@ export default function InputBundle({
   label, value, placeholder = undefined, type = 'text',
   onChange = undefined, readOnly = false,
 }: InputBundleProps) {
-  // 수정이벤트w
+  // 수정이벤트
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!onChange) {
       return;

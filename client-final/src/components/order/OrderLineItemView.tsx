@@ -17,6 +17,10 @@ const Container = styled.tr`
 `;
 
 export default function OrderLineItemView({ lineItem }:OrderLineItemViewProps) {
+  if (lineItem.id === '') {
+    return null;
+  }
+
   return (
     <Container>
       <td>
