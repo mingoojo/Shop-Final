@@ -48,4 +48,8 @@ export default class CartStore {
   setError(error:boolean) {
     this.error = error;
   }
+
+  get totalPrice() {
+    return this.cart.reduce((acc, cur) => acc + cur.totalPrice, 0);
+  }
 }

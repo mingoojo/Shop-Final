@@ -1,4 +1,4 @@
-Feature('Welcome');
+Feature('Home');
 
 Scenario('Visit the home page', ({ I }) => {
   I.amOnPage('/');

@@ -9,7 +9,6 @@ import defaultTheme from './styles/defaultTheme';
 import routes from './routes';
 import ProductDetailStore from './stores/ProductDetailStore';
 import fixtures from '../fixtures';
-import CartStore from './stores/CartStore';
 
 const context = describe;
 
@@ -155,37 +154,27 @@ describe('routes', () => {
     });
   });
 
-  // context('when the current path is “/orders', () => {
-  //   it('renders the order list page', async () => {
-  //     renderRouter('/orders');
+  context('when the current path is “/orders', () => {
+    it('renders the order list page', async () => {
+      renderRouter('/orders');
 
-  //     await waitFor(() => {
-  //       screen.getByText(/결제 금액/);
-  //     });
-  //   });
-  // });
+      await waitFor(() => {
+        screen.getByText(/주문목록/);
+      });
+    });
+  });
 
-  // context('when the current path is “/orders/{id}', () => {
-  //   context('with correct ID', () => {
-  //     it('renders the product detail page', async () => {
-  //       renderRouter('/orders/order-01');
+  context('when the current path is “/orders/{id}', () => {
+    context('with correct ID', () => {
+      it('renders the product detail page', async () => {
+        renderRouter('/orders/order-01');
 
-  //       screen.getByText(/Loading/);
+        screen.getByText(/loading.../);
 
-  //       await waitFor(() => {
-  //         screen.getByText(/맨투맨/);
-  //       });
-  //     });
-  //   });
-
-  //   context('with incorrect ID', () => {
-  //     it('renders “not found” message', async () => {
-  //       renderRouter('/orders/xxx');
-
-  //       await waitFor(() => {
-  //         screen.getByText(/Error/);
-  //       });
-  //     });
-  //   });
-  // });
+        waitFor(() => {
+          screen.getByText(/맨투맨/);
+        });
+      });
+    });
+  });
 });

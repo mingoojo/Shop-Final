@@ -11,6 +11,7 @@ const ButtonItem = styled.button`
 margin-block: 1rem;
 font-family: 'GmarketSansMedium';
 border-radius: 0.5rem;
+z-index: 0;
 background-color: ${(props) => props.theme.colors.primary};
 color: white;
 font-size: 1.6rem;

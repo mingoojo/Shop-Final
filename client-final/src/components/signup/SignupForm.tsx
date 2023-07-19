@@ -16,28 +16,34 @@ export default function SignupForm() {
 
   const { setAccessToken } = useAccessToken();
 
+  // 엑세스 토큰에 따라 localStorage에서 관리하는 AccessToken에도 적용해준다.
   useEffect(() => {
     if (accessToken) {
       setAccessToken(accessToken);
     }
   }, [accessToken]);
 
+  // name 입력 메서드
   const handleName = (value:string) => {
     signupFormStore.changeName(value);
   };
 
+  // email 입력 메서드
   const handleEmail = (value : string) => {
     signupFormStore.changeEmail(value);
   };
 
+  // password 입력 메서드
   const handlePassword = (value:string) => {
     signupFormStore.changePassword(value);
   };
 
+  // passwordConfirmation 입력 메서드
   const handlePasswordConfirmation = (value:string) => {
     signupFormStore.changePasswordConfirmation(value);
   };
 
+  // submit > 입력값을 기준으로 로그인 기능 실행
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     signupFormStore.fetchSignup();

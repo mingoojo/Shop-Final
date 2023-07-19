@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 import fixtures from '../../../fixtures';
 import { CartProduct } from '../../types';
 import { render } from '../../utils/test-helpers';
@@ -7,8 +8,10 @@ import CartTable from './CartTable';
 const context = describe;
 
 describe('CartTable', () => {
-  function renderCartTable({ cart }:{cart:CartProduct[]}) {
-    render(<CartTable cart={cart} />);
+  async function renderCartTable({ cart }:{cart:CartProduct[]}) {
+    await act(() => {
+      render(<CartTable cart={cart} />);
+    });
   }
   context('when cart is exist', () => {
     const { cart } = fixtures;

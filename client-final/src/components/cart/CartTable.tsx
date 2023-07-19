@@ -6,6 +6,7 @@ import Button from '../ui/Button';
 
 type CartTableProps = {
   cart: CartProduct[]
+  totalPrice : number
 }
 
 const Container = styled.div`
@@ -23,11 +24,8 @@ const Container = styled.div`
 
 `;
 
-export default function CartTable({ cart }:CartTableProps) {
+export default function CartTable({ cart, totalPrice }:CartTableProps) {
   const navigate = useNavigate();
-  const totalPrice = cart.reduce((acc, cur) => (
-    acc + cur.totalPrice
-  ), 0);
 
   const handleClick = () => {
     navigate('/order');

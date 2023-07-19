@@ -9,7 +9,6 @@ import useCartStore from '../../hooks/useCartStore';
 
 const Container = styled.div`
 margin-block: 2rem;
-/* text-align: center; */
   p {
     margin-block: 2rem;
     color: ${(props) => props.theme.colors.primary};

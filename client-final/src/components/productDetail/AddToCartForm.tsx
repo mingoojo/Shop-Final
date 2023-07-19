@@ -14,11 +14,13 @@ const Container = styled.div`
 
 export default function AddToCartForm() {
   const { accessToken } = useAccessToken();
+
   if (!accessToken) {
     return (
       <LoginMessage />
     );
   }
+
   return (
     <Container>
       <Quantity />

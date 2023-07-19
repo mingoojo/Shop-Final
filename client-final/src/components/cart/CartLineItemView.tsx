@@ -7,6 +7,10 @@ type CartLineItemViewProps = {
 }
 
 const Container = styled.tr`
+  .item{
+    text-align: end;
+  }
+
   td{
     .option{
       font-size: 1.3rem;

@@ -17,7 +17,7 @@ export default function Option({ option, index, selectedItem }:OptionProps) {
   };
 
   return (
-    <div className="combobox">
+    <div>
       <label>
         {option.kind}
         <select value={selectedItem.name} onChange={handleChange}>

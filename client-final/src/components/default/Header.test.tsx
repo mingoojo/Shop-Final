@@ -1,5 +1,6 @@
-import { act } from 'react-dom/test-utils';
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import {
+  act, fireEvent, screen, waitFor,
+} from '@testing-library/react';
 import { render } from '../../utils/test-helpers';
 import Header from './Header';
 
@@ -28,7 +29,7 @@ describe('Header', () => {
         render(<Header />);
       });
 
-      fireEvent.click(screen.getByRole('button', { name: 'logout' }));
+      await fireEvent.click(screen.getByRole('button', { name: 'logout' }));
 
       waitFor(() => {
         screen.getByText(/Login/);
@@ -42,7 +43,7 @@ describe('Header', () => {
         render(<Header />);
       });
 
-      fireEvent.mouseUp(screen.getByText(/Products/));
+      await fireEvent.mouseUp(screen.getByText(/Products/));
 
       waitFor(() => {
         screen.getByText(/top/);

@@ -11,7 +11,7 @@ const Container = styled.div`
     width: 100%;
     aspect-ratio: 1/1;
   }
-  .productName{
+  .productsNameBox{
     margin-block: 1rem;
     font-weight: 500;
     line-height: 2rem;
@@ -25,10 +25,10 @@ export default function Product({ product }:ProdcutProps) {
   return (
     <Container>
       <img className="thumbnail" src={`${product.image}`} alt="Thumbnail" />
-      <div className="productName">
+      <div className="productsNameBox">
         {product.name}
       </div>
-      <div className="productPrice">
+      <div className="productsPriceBox">
         {product.price.toLocaleString()}
         원
       </div>

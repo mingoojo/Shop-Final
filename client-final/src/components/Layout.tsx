@@ -4,13 +4,6 @@ import useCheckAccessToken from '../hooks/useCheckAccessToken';
 import Header from './default/Header';
 
 const Container = styled.div`
-border: 2px solid #222;
-  .headerBox{
-    border-bottom: 1px solid #222;
-    background-color: ${(props) => props.theme.colors.backgroundMain};
-    position: fixed;
-    width: 100vw;
-  }
   .mainBody{
     .boxSpacing{
       visibility: hidden;

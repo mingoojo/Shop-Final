@@ -1,5 +1,6 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { container } from 'tsyringe';
+import { act } from 'react-dom/test-utils';
 import { render } from '../../utils/test-helpers';
 import SignupFormStore from '../../stores/SignupFormStore';
 import SignupForm from './SignupForm';
@@ -12,9 +13,13 @@ describe('SignupForm', () => {
 
       await store.setError(true);
 
-      render(<SignupForm />);
+      await act(() => {
+        render(<SignupForm />);
+      });
 
-      screen.getByText(/가입에 실패했습니다./);
+      waitFor(() => {
+        screen.getByText(/가입에 실패했습니다./);
+      });
     });
   });
 
@@ -23,9 +28,13 @@ describe('SignupForm', () => {
       const store = container.resolve(SignupFormStore);
       await store.changeEmail('test@test.com');
 
-      render(<SignupForm />);
+      await act(() => {
+        render(<SignupForm />);
+      });
 
-      screen.getByDisplayValue(/test@test.com/);
+      waitFor(() => {
+        screen.getByDisplayValue(/test@test.com/);
+      });
     });
   });
 });

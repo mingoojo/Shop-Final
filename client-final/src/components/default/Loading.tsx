@@ -10,7 +10,7 @@ top: 0;
 left: 0;
 right: 0;
 margin: auto;
-  .box{
+  .loadingBox{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -44,7 +44,7 @@ margin: auto;
 export default function Loading() {
   return (
     <Container>
-      <div className="box">
+      <div className="loadingBox">
         <div className="loader" />
         <div className="loadingPara">Loading...</div>
       </div>

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useBoolean } from 'usehooks-ts';
 import styled from 'styled-components';
 import useOrderFormStore from '../../hooks/useOrderFormStore';

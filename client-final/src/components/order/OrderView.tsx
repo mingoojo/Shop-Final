@@ -4,11 +4,7 @@ import PaymentButton from './PaymentButton';
 import ShippingForm from './ShippingForm';
 
 export default function OrderView() {
-  const [{ cart }] = useCartStore();
-
-  const totalPrice = cart.reduce((acc, cur) => (
-    acc + cur.totalPrice
-  ), 0);
+  const [{ cart, totalPrice }] = useCartStore();
 
   if (!cart.length) {
     return (

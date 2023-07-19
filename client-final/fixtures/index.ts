@@ -3,6 +3,8 @@ import products from './products';
 import cart from './cart';
 import orders from './orders';
 import nullCart from './nullCart';
+import orderDetail from './orderDetail';
+import receiver from './receiver';
 
 export default {
   categories,
@@ -10,4 +12,6 @@ export default {
   cart,
   orders,
   nullCart,
+  orderDetail,
+  receiver,
 };

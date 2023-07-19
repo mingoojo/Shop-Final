@@ -57,6 +57,15 @@ const handlers = [
     res(ctx.json(fixtures.cart))
   )),
 
+  rest.get('http://localhost:3000/orders', (req, res, ctx) => (
+    res(ctx.json(fixtures.orders))
+  )),
+
+  rest.get('http://localhost:3000/orders/:id', (req, res, ctx) => {
+    const orderDetail = fixtures.orderDetail[0];
+    return res(ctx.json(orderDetail));
+  }),
+
   rest.post('http://localhost:3000/categories/cart/line-items', (req, res, ctx) => (
     res(ctx.status(201))
   )),

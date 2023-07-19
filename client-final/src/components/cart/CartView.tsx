@@ -2,7 +2,7 @@ import useCartStore from '../../hooks/useCartStore';
 import CartTable from './CartTable';
 
 export default function CartView() {
-  const [{ cart }] = useCartStore();
+  const [{ cart, totalPrice }] = useCartStore();
 
   if (!cart.length) {
     return (
@@ -13,6 +13,6 @@ export default function CartView() {
   }
 
   return (
-    <CartTable cart={cart} />
+    <CartTable cart={cart} totalPrice={totalPrice} />
   );
 }
