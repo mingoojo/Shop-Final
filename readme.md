@@ -1,9 +1,15 @@
 # 쇼핑몰 프로젝트
 
+## 🖥️ 프로젝트 소개
+
+로그인부터 상품 보기, 장바구니 담기, 제품 결제 및 배송 정보확인까지, 비지니스 플로우에 맞는 사이트를 구축하기 위한 프로젝트입니다.
+
 - **`Team name` :**  Mingoo Jo의 풀스택 개발기!
 - **`Project` :** Shop 페이지 만들기
 - **`Project duration` :** 2023.06.08 - 2023.07.31
 - **`API 명세서`:** [API명세서](https://app.gitbook.com/o/aC7kAbQsee1CDu38FYh1/s/WfgiLzNGthidNUICdqLH/shop/api)
+
+
 
 ## 🌟 Pages & Features
 
