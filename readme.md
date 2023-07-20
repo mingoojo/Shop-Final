@@ -5,7 +5,7 @@
 - **`Team name` :**  Mingoo Jo의 풀스택 개발기!
 - **`Project` :** Shop 페이지 만들기
 - **`Project duration` :** 2023.06.08 - 2023.07.31
-- **`API 명세서`:** [API명세서](https://www.notion.so/API-fa79f073d65a4453a6631155f00c2694)
+- **`API 명세서`:** [API명세서](https://fanatical-tibia-7d0.notion.site/API-fa79f073d65a4453a6631155f00c2694?pvs=4)
 
 ## 📌 주요 기능
 
