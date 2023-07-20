@@ -8,15 +8,16 @@ import CartTable from './CartTable';
 const context = describe;
 
 describe('CartTable', () => {
-  async function renderCartTable({ cart }:{cart:CartProduct[]}) {
+  async function renderCartTable({ cart, totalPrice }:{cart:CartProduct[], totalPrice:number}) {
     await act(() => {
-      render(<CartTable cart={cart} />);
+      render(<CartTable cart={cart} totalPrice={totalPrice} />);
     });
   }
   context('when cart is exist', () => {
     const { cart } = fixtures;
+    const totalPrice = cart.reduce((acc, cur) => (acc + cur.totalPrice), 0);
     it('render cart', () => {
-      renderCartTable({ cart });
+      renderCartTable({ cart, totalPrice });
       screen.getByText('제품명');
     });
   });

@@ -8,8 +8,8 @@ import Header from './default/Header';
 import Button from './ui/Button';
 
 export default function Layout() {
-  const navigate = useNavigate()
-  const {accessToken, setAccessToken} = useAccessToken()
+  const navigate = useNavigate();
+  const { accessToken, setAccessToken } = useAccessToken();
   useCheckAccessToken();
 
   useEffect(() => {
@@ -18,12 +18,10 @@ export default function Layout() {
     }
   }, [accessToken]);
 
-
-
   return (
     <div>
-      <Header/>
-      <Outlet/>
+      <Header />
+      <Outlet />
     </div>
   );
 }

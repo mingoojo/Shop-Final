@@ -29,7 +29,7 @@ describe('Header', () => {
         render(<Header />);
       });
 
-      await fireEvent.click(screen.getByRole('button', { name: 'logout' }));
+      await fireEvent.click(screen.getByText('logout'));
 
       waitFor(() => {
         screen.getByText(/Login/);

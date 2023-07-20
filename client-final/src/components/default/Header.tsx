@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useAccessToken from '../../hooks/useAccessToken';
 import useCategoriesStore from '../../hooks/useCategoriesStore';
+import LoginItem from './LoginItem';
+import LogoutItem from './LogoutItem';
 
 const Container = styled.header`
   margin-block: 1rem;
@@ -47,18 +49,13 @@ const Container = styled.header`
 `;
 
 export default function Header() {
-  const navigate = useNavigate();
   const [{ categories }, categoriesStore] = useCategoriesStore();
-  const { accessToken, setAccessToken } = useAccessToken();
+  const { accessToken } = useAccessToken();
 
+  // 카테고리 정보 얻기
   useEffect(() => {
     categoriesStore.fetchCategories();
   }, []);
-
-  const handleLogout = () => {
-    setAccessToken('');
-    navigate('/');
-  };
 
   return (
     <Container>
@@ -83,28 +80,7 @@ export default function Header() {
             </ul>
           </li>
           {
-            accessToken ? (
-              <>
-                <li>
-                  <Link to="/cart">Cart</Link>
-                </li>
-                <li>
-                  <Link to="/orders">Orders</Link>
-                </li>
-                <li>
-                  <button onClick={handleLogout} type="button">logout</button>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-                <li>
-                  <Link to="/signup">Signup</Link>
-                </li>
-              </>
-            )
+            accessToken ? (<LoginItem />) : (<LogoutItem />)
           }
         </ul>
       </nav>
