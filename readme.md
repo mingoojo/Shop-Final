@@ -9,11 +9,43 @@
 - **`Project duration` :** 2023.06.08 - 2023.07.31
 - **`API 명세서`:** [API명세서](https://app.gitbook.com/o/aC7kAbQsee1CDu38FYh1/s/WfgiLzNGthidNUICdqLH/shop/api)
 
+## 📌 주요 기능
+
+#### 로그인
+- DB값 검증
+- 로그인 시 accessToken 생성
+
+#### 회원가입
+- 이메일 기반 회원가입
+- ID 중복 체크
+
+#### 상품 보기
+- 상품 목록 확인
+- 가격 및 상품 정보 확인
+
+#### 상품 상세 보기
+- 상품 옵션 및 설명 확인
+- 상품 옵션 선택
+- 장바구니에 담기
+
+#### 카트 보기
+- 카트 상품 확인
+- 유저 정보에 맞는 카트 상품 확인
+
+#### 주문하기
+- 다음 우편번호 서비스로 배송지 정보 입력
+- 포트원을 활용한 결제 기능
+- 
+
+#### 관리자 페이지 
+- 회원 관리
+- 주문 관리
+- 상점 관리
 
 
 ## 🌟 Pages & Features
 
-## 세팅 목록
+## ⚙️ 개발 환경
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [ESLint](https://eslint.org/)
