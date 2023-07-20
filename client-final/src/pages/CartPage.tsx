@@ -10,6 +10,7 @@ const Container = styled.div`
 export default function CartPage() {
   const [, cartStore] = useCartStore();
 
+  // 카트 정보 얻기
   useEffect(() => {
     cartStore.fetchCart();
   }, []);

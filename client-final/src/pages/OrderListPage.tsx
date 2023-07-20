@@ -10,6 +10,7 @@ const Container = styled.div`
 export default function OrderListPage() {
   const [, orderListStore] = useOrderListStore();
 
+  // 오더리스트 정보 얻기
   useEffect(() => {
     orderListStore.fetechOrders();
   }, []);

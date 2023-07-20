@@ -12,6 +12,7 @@ export default function OrderDetailPage() {
   const [, orderDetailStore] = useOrderDetailStore();
   const params = useParams();
 
+  // orderDetail 받기
   useEffect(() => {
     orderDetailStore.fetchOrderDetail({ orderId: String(params.id) });
   }, []);
