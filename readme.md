@@ -1,10 +1,9 @@
 # 쇼핑몰 프로젝트
 
-</br>
-**`Team name` :**  Mingoo Jo의 풀스택 개발기!
-**`Project` :** Shop 페이지 만들기 
-**`Project duration` :** 2023.06.08 - 2023.07.31
-**`API 명세서`:** [API명세서](https://app.gitbook.com/o/aC7kAbQsee1CDu38FYh1/s/WfgiLzNGthidNUICdqLH/shop/api)
+- **`Team name` :**  Mingoo Jo의 풀스택 개발기!
+- **`Project` :** Shop 페이지 만들기
+- **`Project duration` :** 2023.06.08 - 2023.07.31
+- **`API 명세서`:** [API명세서](https://app.gitbook.com/o/aC7kAbQsee1CDu38FYh1/s/WfgiLzNGthidNUICdqLH/shop/api)
 
 ## 🌟 Pages & Features
 
