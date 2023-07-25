@@ -6,6 +6,11 @@
 - **`Project` :** Shop 페이지 만들기
 - **`Project duration` :** 2023.06.08 - 2023.07.31
 - **`API 명세서`:** [API명세서](https://fanatical-tibia-7d0.notion.site/API-fa79f073d65a4453a6631155f00c2694?pvs=4)
+- **`클라이언트 URL`:** [SHOP Client](https://shop-deploy.web.app)
+- **`어드민 클라이언트 URL`:** [SHOP ADMIN Client](https://shop-admin-deploy.web.app)
+- 클라이언트 테스트용 아이디 : (swyks11@naver.com / test1234)
+- 어드민 클라이언트 아이디 : (admin2@naver.com / admin123)
+
 
 ## 📌 주요 기능
 

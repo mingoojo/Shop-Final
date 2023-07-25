@@ -6,7 +6,7 @@ import {
   ProductSelectedOption, ProductSummary, Receiver,
 } from '../types';
 
-const apiBaseUrl = 'http://localhost:3000';
+const apiBaseUrl = 'https://shop-server-c5a87aadc0f3.herokuapp.com';
 
 class ApiService {
   private instance = axios.create({

@@ -17,7 +17,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-  origin: ['http://localhost:8000', 'http://localhost:8080'],
+  origin: ['http://localhost:8000', 'http://localhost:8080', 'https://shop-deploy.web.app', 'https://shop-admin-deploy.web.app'],
   methods: ['GET', 'POST', 'DELETE', 'PATCH'],
   credentials: true,
 }));
@@ -45,8 +45,8 @@ app.use((error:Err, req:Request, res:Response, next:NextFunction) => {
 mongoose.connect(
   `${process.env.MONGODB_KEY}`,
 ).then(() => {
-  app.listen(process.env.PORT, () => {
-    console.log(`Server running at http://localhost:${String(process.env.PORT)} with database!`);
+  app.listen(process.env.PORT || 3000, () => {
+    console.log('Server running with database!');
   });
 }).catch(() => {
   console.log('Connection failed!');

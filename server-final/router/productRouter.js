@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const controllers_1 = __importDefault(require("../controllers"));
+const router = express_1.default.Router();
+router.get('/categories', controllers_1.default.getCategories);
+router.get('/products', controllers_1.default.getProducts);
+router.get('/products/:id', controllers_1.default.getProductDetail);
+router.post('/products', controllers_1.default.createProduct);
+router.get('/cart', controllers_1.default.getCart);
+router.post('/cart', controllers_1.default.createCart);
+router.post('/cart/delete', controllers_1.default.deleteCart);
+router.post('/order', controllers_1.default.createOrder);
+router.get('/orders', controllers_1.default.getOrders);
+router.get('/orders/:id', controllers_1.default.getOrderDetail);
+const productRouter = router;
+exports.default = productRouter;
