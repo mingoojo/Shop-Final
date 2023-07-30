@@ -75,7 +75,7 @@ describe('routes', () => {
 
       screen.getByRole('button', { name: '가입하기' });
 
-      await waitFor(() => {
+      waitFor(() => {
         screen.getByText(/Category #1/);
       });
 
@@ -108,7 +108,7 @@ describe('routes', () => {
 
       screen.getByText(/회원 가입이 완료되었습니다/);
 
-      await waitFor(() => {
+      waitFor(() => {
         screen.getByText(/Category #1/);
       });
     });
@@ -119,7 +119,7 @@ describe('routes', () => {
       it('renders the product list page', async () => {
         renderRouter('/products');
 
-        await waitFor(() => {
+        waitFor(() => {
           screen.getByText(/Product #1/);
         });
       });
@@ -148,7 +148,7 @@ describe('routes', () => {
     it('renders the cart page', async () => {
       renderRouter('/cart');
 
-      await waitFor(() => {
+      waitFor(() => {
         screen.getByText(/합계/);
       });
     });
