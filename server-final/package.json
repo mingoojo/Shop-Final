@@ -10,7 +10,7 @@
     "postinstall": "npm run build"
   },
   "keywords": [],
-  "author": "",
+  "author": "mingoojo",
   "license": "ISC",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

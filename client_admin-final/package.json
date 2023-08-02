@@ -15,7 +15,7 @@
     "codeceptjs": "codeceptjs run --steps",
     "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps"
   },
-  "author": "moonkii",
+  "author": "mingoojo",
   "license": "ISC",
   "devDependencies": {
     "@codeceptjs/configure": "^0.10.0",
