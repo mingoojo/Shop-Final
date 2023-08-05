@@ -11,6 +11,9 @@
 - 클라이언트 테스트용 아이디 : (swyks11@naver.com / test1234)
 - 어드민 클라이언트 아이디 : (admin2@naver.com / admin123)
 
+## 🌟 트러블 슈팅
+- **`TroubleShooting` :** [Notion Link](https://fanatical-tibia-7d0.notion.site/Shop-Trouble-Shooting-Refactoring-61897287c52344b68275a2e8bdc74f7e?pvs=4)
+
 
 ## 📌 주요 기능
 
@@ -44,6 +47,8 @@
 - 주문 관리
 - 상점 관리
 
+## 🛠️ Architecture
+![Architecture](https://github.com/mingoojo/project-shop-image/blob/main/shop-architecture.jpg?raw=true)
 
 ## 🌟 Pages & Features
 |                                                              |                                                              |
